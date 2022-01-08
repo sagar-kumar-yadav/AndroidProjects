@@ -2,7 +2,9 @@ package com.example.android.justjava;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
     /**
     * This method is called when the plus button is clicked.
     */
@@ -41,8 +44,33 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String priceMessage = "Total $ "+(quantity * 5)+"\nThank You!";
+        // Figure out if the user wants whipped cream topping
+        CheckBox whipped_cream_checkbox = findViewById(R.id.whipped_cream_checkbox);
+        boolean hasWhippedCream = whipped_cream_checkbox.isChecked();
+
+        // Figure out if the user wants chocolate topping
+        CheckBox chocolate_checkbox = findViewById(R.id.chocolate_checkbox);
+        boolean hasChocolate = chocolate_checkbox.isChecked();
+
+        // Calculate the price
+        int price = calculatePrice();
+
+        // Display the order summary on the screen
+        String priceMessage = createOrderSummry(price, hasWhippedCream, hasChocolate);
         displayMessage(priceMessage);
+    }
+    private int calculatePrice(){
+        return quantity*5;
+    }
+
+    private String createOrderSummry(int price, boolean addWhippedCream, boolean addChocolate){
+        String priceMessage = "Sagar kumar yadav";
+        priceMessage += "\nAdd whipped cream? "+ addWhippedCream;
+        priceMessage += "\nAdd chocolate? "+ addChocolate;
+        priceMessage += "\nQuantity: " + quantity;
+        priceMessage += "\nTotal: $" + price;
+        priceMessage += "\nThank You!";
+        return priceMessage;
     }
 
     /**
@@ -53,13 +81,6 @@ public class MainActivity extends AppCompatActivity {
         quantityTextView.setText("" + number);
     }
 
-    /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
-    }
 
     /**
      * This method displays the given text on the screen.
