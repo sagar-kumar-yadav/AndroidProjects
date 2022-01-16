@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Bluetooth Chat App</string>
+    <string name="str_label_btn_send">send</string>
+</resources>

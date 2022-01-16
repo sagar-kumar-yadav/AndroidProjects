@@ -12,11 +12,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/name_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:inputType="text"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Toppings"
+            style="@style/CustomText"
+            android:text="@string/toppings"
             android:textAllCaps="true" />
 
         <CheckBox
@@ -40,7 +48,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="Quantity"
-            android:textAllCaps="true" />
+            android:textAllCaps="true"
+            style="@style/CustomText"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
